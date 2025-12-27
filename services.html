@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOY - Own Your Story | Environmental Branding Consultancy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://kit.fontawesome.com/e8ada9ffa6.js" crossorigin="anonymous"></script>
+    <style>
+        :root { --gold: #D3AF37;       --apricot: #FFECAE;      --orange: #FFA500; 
+                --purple: #9b59b6;     --dark-purple: #5C2E5C;   --light-purple: #CFBDE2;   --blue-violet: #8A2BE2 ;        
+                --black: #000000;      
+                --gray: #6B7280;      --light-gray: #EFEFEF;
+                --white: #FFFFFF;    --soft-white: #F5F5F5; 
+                --alpha-white-soft: #FFFFFF1a;  --alpha-white-hard: #FFFFFF99; 
+            }
+        
+        * {   margin: 0;       padding: 0;       box-sizing: border-box;        }
+        body {    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;         background: linear-gradient(135deg,  var(--soft-white) 0%, var(--white) 100%);
+        }
+
+        /* Floating Shapes Animation */
+        .shape {	position: absolute;      border-radius: 50%;      opacity: 0.15;        animation: float 20s infinite ease-in-out;        }
+        .shape-1 {   width: 300px;     height: 300px; 	top: -150px;	left: -150px;		animation-delay: 0s;
+					background: linear-gradient(135deg, #9b59b6, #e74c3c);                    }
+        .shape-2 {     width: 200px;        height: 200px;	   top: 20%;       right: -100px;        animation-delay: 3s;
+            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+        .shape-3 {     width: 150px;      height: 150px;		bottom: 10%;         left: 5%;          animation-delay: 6s;
+            background: linear-gradient(135deg, #9b59b6, #3498db);       }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }          25% { transform: translate(50px, 30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }      75% { transform: translate(30px, -20px) scale(1.05); }
+        }
+
+        /* Animated Background Bubbles */
+        .bubble {   position: fixed;     border-radius: 50%;       opacity: 0.15;
+            animation: floatingBubble 15s infinite ease-in-out;            z-index: 0;
+        }
+        .bubble1 {    width: 200px;       height: 200px;    top: 10%;           left: 10%;        animation-delay: 0s;
+            background: radial-gradient(circle, #8A2BE2, transparent);            
+        }
+        .bubble2 {       width: 150px;          height: 150px;  top: 60%;           right: 15%;           animation-delay: 2s;
+            background: radial-gradient(circle, #FFA500, transparent)  ;          
+        }
+        .bubble3 {     width: 100px;        height: 100px;   bottom: 10%;          left: 50%;        animation-delay: 4s;
+            background: radial-gradient(circle, #8A2BE2, transparent);           
+        }
+        .bubble4 {      width: 180px;           height: 180px;  top: 30%;       right: 5%;           animation-delay: 6s;
+            background: radial-gradient(circle, #FFA500, transparent);            
+        }
+        @keyframes floatingBubble {
+            0%, 100% {       transform: translate(0, 0) scale(1);           }
+            33% {            transform: translate(30px, -30px) scale(1.1);  }
+            66% {            transform: translate(-20px, 20px) scale(0.9);  }
+        }
+
+        /* Navigation */
+        nav {    position: fixed;         top: 0;         width: 100%;		z-index: 1000;		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95);        backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;            display: flex;        justify-content: space-between;      align-items: center;            
+        }
+        .logo { font-size: 2rem;      font-weight: bold;     background: linear-gradient(135deg, #9b59b6, #e74c3c);
+				-webkit-background-clip: text;        -webkit-text-fill-color: transparent;         background-clip: text;
+        }
+        .nav-links {    display: flex;        	 gap: 2.5rem;         list-style: none;        }
+        .nav-links a {  text-decoration: none;   color: #333;       font-weight: 500;	transition: all 0.3s;     position: relative;        }
+        .nav-links a:hover {            color: #9b59b6;        }
+        .nav-links a::after {    content: '';   position: absolute;      bottom: -5px;      left: 0;    width: 0;  height: 2px;
+            background: linear-gradient(90deg, #9b59b6, #e74c3c);        transition: width 0.3s;
+        }
+        .nav-links a:hover::after {        width: 100%;        }		
+        .cta-btn {   background: linear-gradient(135deg, #9b59b6, #e74c3c);       color: white;
+            padding: 0.8rem 2rem;        border-radius: 50px;         text-decoration: none;       font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-btn:hover {     transform: translateY(-2px);   box-shadow: 0 10px 25px rgba(155, 89, 182, 0.3);        }
+
+        /* Section Header */
+         .section-header {            text-align: center;            margin-bottom: 4rem;        }
+        .section-header h2 {	font-size: 3rem;            color: #2c3e50;            margin-bottom: 1rem;        }
+        .section-header p {     font-size: 1.2rem;         color: #666;       max-width: 700px;      margin: 0 auto;        }
+
+       
+        /* Hero Section */
+        .hero {    min-height: 100vh;      display: flex;     align-items: center;  padding: 6rem 5% 3rem;
+            position: relative;            overflow: hidden;
+        }
+        .hero-content {     max-width: 610px;        z-index: 10;        animation: fadeInLeft 1s ease-out;      }
+
+        @keyframes fadeInLeft {
+            from {    opacity: 0;        transform: translateX(-50px);          }
+            to {      opacity: 1;        transform: translateX(0);            }
+        }
+
+        .hero h1 {   font-size: 4rem;    color: #2c3e50;     margin-bottom: 1rem;     line-height: 1.2;        }
+        .gradient-text {   background: linear-gradient(135deg, #9b59b6, #e74c3c);     -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;            background-clip: text;
+        }
+        .slogan {   font-size: 1.3rem;      font-weight: 600;    color: #f1c40f;      margin-bottom: 0rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+		.hero p {   font-size: 1.1rem;      color: #555;    margin-bottom: 1rem;        line-height: 1.8;     }
+        .hero-buttons {        display: flex;            gap: 1.5rem;        }
+        .btn-primary {       background: linear-gradient(135deg, #9b59b6, #e74c3c);       color: white;
+            padding: 1rem 2.5rem;           border-radius: 50px;         text-decoration: none;     font-weight: 600;
+            transition: all 0.3s;           display: inline-block;
+        }
+        .btn-primary:hover {      transform: translateY(-3px);     box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4);     }
+        .btn-secondary {     background: transparent;      color: #9b59b6;    padding: 1rem 2.5rem;
+            border: 2px solid #9b59b6;           border-radius: 50px;      text-decoration: none;      font-weight: 600;
+            transition: all 0.3s;            display: inline-block;
+        }
+        .btn-secondary:hover {        background: #9b59b6;        color: white;        }
+
+        .hero-visual {  position: absolute;      right: 5%;         top: 50%;     						   transform: translateY(-50%);
+						width: 500px;            height: 500px;     animation: fadeInRight 1s ease-out;    z-index: 1;
+        }
+
+        @keyframes fadeInRight {     
+			from {     opacity: 0;   		transform: translateY(-50%) translateX(50px); }
+            to {       opacity: 1;          transform: translateY(-50%) translateX(0);          }
+        }
+
+        .hero-image {  position: absolute;    width: 400px;    height: 400px;   top: 50%;         left: 50%;
+            transform: translate(-60%, -40%); z-index: 1;      border-radius: 50%;          overflow: hidden;
+            box-shadow: 0 20px 60px rgba(155, 89, 182, 0.3);
+        }
+        .hero-image svg {       width: 100%;            height: 100%;        }
+        .hero-profile-circle {  width: 100%;     height: 100%;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(241, 196, 15, 0.1));
+            display: flex;      align-items: center;         justify-content: center;            position: relative;
+        }
+        #hero-profile-image {        width: 100%;        height: 100%;        color: #9b59b6;        opacity: 0.3;    }
+        
+		
+		
+        .service-tag {  position: absolute;   background: white;    padding: 1rem 2rem;	   
+			display: flex;	 align-items: center;           gap: 0.8rem;
+            border-radius: 50px;            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: float 10s infinite ease-in-out;
+        }
+        .service-icon {       width: 40px;        height: 40px;     border-radius: 50%;      display: flex;
+            align-items: center;            justify-content: center;            font-size: 1.2rem;
+        }
+
+        .tag-1 {      top: 15%;       right: 10%;        animation-delay: 0s;     }
+        .tag-1 .service-icon {     background: linear-gradient(135deg, #9b59b6, #e74c3c);      }
+        .tag-2 {       top: 35%;       right: 0;            animation-delay: 1s;        }
+        .tag-2 .service-icon {            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+        .tag-3 {            bottom: 30%;            right: 20%;            animation-delay: 2s;        }
+        .tag-3 .service-icon {            background: linear-gradient(135deg, #3498db, #2ecc71);        }
+		.tag-4 {            bottom: 10%;            right: 35%;            animation-delay: 3s;        }
+        .tag-4 .service-icon {            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+
+        /* Stats Section */
+        .stats {       padding: 4rem 5%;      background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            color: white;            position: relative;            overflow: hidden;
+        }
+
+        .hero-stats-container { padding: 2rem 3%; 
+            display: grid;        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));          gap: 2rem;
+            max-width: 1200px;     margin: 0 auto;            position: relative;			            z-index: 10;
+        }
+        .hero-stat-item {       background: #bbb0b0;     text-align: center;            animation: fadeInUp 1s ease-out;        }
+        @keyframes fadeInUp {          
+			from {              opacity: 0;                transform: translateY(30px);         }
+            to {                opacity: 1;                transform: translateY(0);            }
+        }
+
+        .hero-stat-number {        font-size: 2rem;         font-weight: bold;        margin-bottom: 0.5rem;        }
+        .hero-stat-label {        font-size: 1rem;        opacity: 0.9;        }
+		
+		
+    </style>
+    
+    <style>        /* Services Section with Carousel */
+        .services {       padding: 6rem 5%;       background: white;            overflow: hidden;        }
+        .services-carousel-wrapper {	overflow: hidden;		max-width: 100%;            margin: 3px auto;    padding: 1%;    }
+        .services-carousel {	display: flex;         gap: 2.5rem;       animation: scroll 30s linear infinite;	width: fit-content;        }
+        .services-carousel:hover {            animation-play-state: paused;        }
+        @keyframes scroll {
+            0% {                transform: translateX(0);            }
+            100% {              transform: translateX(calc(-100% / 3 * 1.5));            }
+        }
+        .service-card {     background: white;     padding: 2rem;         border-radius: 20px 0px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);       transition: all 0.3s;        position: relative;
+            overflow: hidden;        min-width: 300px;         max-width: 400px;         width: 380px;     flex-shrink: 0;
+        }
+        .service-card::before {  content: '';     position: absolute;    top: 0;  left: 0;     width: 100%;    height: 4px;
+            background: linear-gradient(90deg, #9b59b6, #e74c3c);        transform: scaleX(0);     transition: transform 0.3s;
+        }
+        .service-card:hover {	transform: translateY(-10px);   box-shadow: 0 20px 50px rgba(155, 89, 182, 0.2);   
+                                background: #9b59b6;  border-top-color: #9b59b6 ;
+        }
+        .service-card:hover::before {            transform: scaleX(1);        }
+        
+        .service-card-icon-div { display: flex; align-items: center;    padding: 5px;   gap:5px; 
+        }
+        .service-card-icon {    width: 70px;     height: 70px;      border-radius: 50%;      display: flex;
+            align-items: center;         justify-content: center;   font-size: 2rem;	     margin-bottom: 1.5rem;
+            color: white;
+        }
+        .service-card h3 {     font-size: 1.6rem;       color: #2c3e50;       margin-bottom: 1rem;       }
+        .service-card p {      color: #666;          line-height: 1.8;        margin-bottom: 1.5rem;     }
+
+        .service-link {        color: #9b59b6;     text-decoration: none;      font-weight: 600;
+            display: inline-flex;       align-items: center;       gap: 0.5rem;       transition: gap 0.3s;
+        }
+        .service-link:hover {            gap: 1rem;        }
+        .section-header {            text-align: center;            margin-bottom: 4rem;        }
+        .section-header h2 {	font-size: 3rem;            color: #2c3e50;            margin-bottom: 1rem;        }
+        .section-header p {     font-size: 1.2rem;         color: #666;       max-width: 700px;      margin: 0 auto;        }
+
+        
+
+    </style>
+
+    <style>/* Brand Strategy Section */
+        .brand-strategy {            padding: 6rem 5%;            background: #fafafa;        }
+        .strategy-grid {   display: grid;      grid-template-columns: repeat(3, 1fr);      gap: 1.5rem;
+            max-width: 1200px;            margin: 0 auto;
+        }
+        .strategy-card {    background: white;      border: 2px solid #e0e0e0;    border-radius: 8px;     padding: 2rem;
+            transition: all 0.3s;        display: flex;      flex-direction: column;       min-height: 280px;
+        }
+        .strategy-card:hover {    transform: translateY(-5px);       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #9b59b6;
+        }
+        .strategy-card.featured {    background: linear-gradient(135deg, #9b59b6, #e74c3c);      color: white;      border-color: #2c3e50;      }
+        .strategy-icon {           margin-bottom: 1rem;          color: #2c3e50;        }
+        .strategy-card.featured .strategy-icon {            color: white;        }
+        .strategy-label {  font-size: 0.85rem;    color: #666;     margin-bottom: 0.8rem;    text-transform: capitalize;        }
+        .strategy-card.featured .strategy-label {            color: rgba(255, 255, 255, 0.8);        }
+        .strategy-title {   font-size: 1.3rem;  color: #2c3e50;    margin-bottom: 0.8rem;     font-weight: 600;     line-height: 1.4;        }
+        .strategy-card.featured .strategy-title {            color: white;        }
+        .strategy-description {  font-size: 0.95rem;   color: #666;       margin-bottom: 1rem;   line-height: 1.6;        }
+        .strategy-card.featured .strategy-description {       color: rgba(255, 255, 255, 0.9);        }
+        .strategy-link {      color: #2c3e50;     text-decoration: none;      font-weight: 600;    	   display: inline-flex;
+            align-items: center;        gap: 0.5rem;     margin-top: auto;    transition: gap 0.3s;    font-size: 0.95rem;
+        }
+        .strategy-card.featured .strategy-link {            color: white;        }
+        .strategy-link:hover {            gap: 1rem;        }
+        .strategy-image {     margin-top: auto;    padding-top: 1.5rem;     background: #f5f5f5;           border-radius: 6px;         min-height: 120px;
+			display: flex;      align-items: center;            justify-content: center;       
+        }
+        .strategy-card.featured .strategy-image {            background: rgba(255, 255, 255, 0.1);        }
+
+        
+
+    </style>
+
+    <style>            /* Packages Section */
+        .packages {     padding: 3rem 4%;    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);      }
+        .packages-grid { display: grid;      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;         max-width: 1200px;           margin: 0 auto;
+        }
+        .package-card {   background: white;   padding: 3rem 2rem;       border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);          transition: all 0.3s;       text-align: center;
+        }
+        .package-card:hover {    transform: translateY(-10px);    box-shadow: 0 20px 50px rgba(155, 89, 182, 0.2); }
+        .package-card.featured { border: 3px solid #9b59b6;         position: relative;        }
+        .featured-badge {   position: absolute;    	 top: -15px;     right: 20px;     background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            color: white;	padding: 0.5rem 1.5rem;  border-radius: 50px;     font-size: 0.9rem;   font-weight: 600;
+        }
+        .package-name {       font-size: 1.8rem;        color: #2c3e50;      margin-bottom: 1rem;      }
+        .package-price {  font-size: 2.5rem;         font-weight: bold;	background-clip: text;            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #9b59b6, #e74c3c);    -webkit-background-clip: text;      -webkit-text-fill-color: transparent;            
+        }
+        .package-features {        list-style: none;         margin-bottom: 2rem;         text-align: left;      }
+        .package-features li {     padding: 0.8rem 0;        color: #666;        border-bottom: 1px solid #eee;  }
+        .package-features li::before {   content: '✓';      color: #2ecc71;      font-weight: bold;      margin-right: 0.8rem;       }
+
+    </style>
+
+    <style>       /* CTA Section */
+        .cta {       padding: 6rem 5%;       position: relative;       z-index: 1;        }
+        .cta-content {      max-width: 800px;   margin: 0 auto;         text-align: center;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(255, 165, 0, 0.05));
+            padding: 4rem 3rem;       border-radius: 40px;         border: 2px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        .cta-content h2 {            font-size: 3rem;            margin-bottom: 1.5rem;        }
+        .cta-content p {            font-size: 1.2rem;            color: #555;       margin-bottom: 2.5rem;    }
+        .cta-form {       display: flex;       gap: 1rem;         max-width: 500px;           margin: 0 auto;    }
+        .cta-form input {  flex: 1;      padding: 1rem 1.5rem;    border-radius: 50px;         border: 2px solid rgba(138, 43, 226, 0.2);
+            background: #ffffff;            color: #1a1a1a;            font-size: 1rem;
+        }
+        .cta-form input::placeholder {            color: #888;        }
+        .cta-form button {    padding: 1rem 2.5rem;    background: linear-gradient(135deg, #8A2BE2, #FFA500);
+            border: none;     border-radius: 50px;     color: #fff;      font-weight: 600;     cursor: pointer;         transition: all 0.3s;
+        }
+        .cta-form button:hover {            transform: translateY(-3px);            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.5);        }
+
+    </style>
+
+</head>
+<body>
+    <!-- Floating Shapes -->
+    <div class="shape shape-1"></div>   <div class="shape shape-2"></div> <div class="shape shape-3"></div>
+
+    <!-- Animated Background Bubbles -->
+    <div class="bubble bubble1"></div>    <div class="bubble bubble2"></div>
+    <div class="bubble bubble3"></div>    <div class="bubble bubble4"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">J.O.Y</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i>  </a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <!--    <li><a href="#packages">Packages</a></li>       -->
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="clients.html">Clients</a></li>
+        </ul>
+        <a href="#contact" class="cta-btn">Get Started</a>
+    </nav>
+
+     <!-- Services Section -->
+    <section class="services fade-in" id="services">
+        <div class="section-header">
+            <h2>Our <span class="gradient-text">Services</span></h2>
+            <p>Amplify your impact with clear and powerfull storytelling</p>
+        </div>
+        <div class="services-carousel-wrapper">
+            <div class="services-carousel">
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  🎯 </span>
+                        <h3>Brand Consultation</h3>                    
+                    </div>
+                    <p>Transforms your unseen impact into visible authority.
+                        Craft narratives that resonates with clients, partners and stakeholders.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  📚 </span>
+                        <h3>Training & Workshops</h3>
+                    </div>
+                    <p>Empower your team with the skills to own their story. 
+                        Interactive sessions in storytelling, brand identity, and strategic 
+                        communication .
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon"> ✨</span>
+                        <h3>Creative Branding</h3>              
+                    </div>
+                    <p>From visual identity to content creation, 
+                        brand experiences that make work visible and inspire real action.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  🌍 </span>
+                          <h3>Environmental Communication</h3>                                
+                    </div>
+                    <p>Structure complex environmental topics with clarity, 
+                        esnuring sustainability stories accessible and compelling.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon"> 📊</span>
+                        <h3>Impact Storytelling</h3>              
+                    </div>
+                    <p>Transform achievements into coherent narratives. 
+                        communicate impact to build trust and attract partnerships.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  🤝 </span>
+                       <h3>Partnership Development</h3>                   
+                    </div>                    
+                    <p>Position your organization as a credible partner through strategic brand positioning 
+                        that showcases stability, impact, and growth potential.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+
+                <!-- Duplicate for seamless loop -->
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  🎯 </span>
+                        <h3>Brand Consultation</h3>                    
+                    </div>
+                    <p>Transforms your unseen impact into visible authority.
+                        Craft narratives that resonates with clients, partners and stakeholders.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  📚 </span>
+                        <h3>Training & Workshops</h3>
+                    </div>
+                    <p>Empower your team with the skills to own their story. 
+                        Interactive sessions in storytelling, brand identity, and strategic 
+                        communication .
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon"> ✨</span>
+                        <h3>Creative Branding</h3>              
+                    </div>
+                    <p>From visual identity to content creation, 
+                        brand experiences that make work visible and inspire real action.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  🌍 </span>
+                        <h3>Environmental Communication</h3>                    
+                    </div>
+                    <p>Structure complex environmental topics with clarity, 
+                        esnuring sustainability stories accessible and compelling.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon"> 📊</span>
+                        <h3>Impact Storytelling</h3>              
+                    </div>
+                    <p>Transform scattered achievements into coherent narratives. 
+                        We quantify and communicate your impact in ways that build trust and attract partnerships.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon-div">
+                        <span class="service-card-icon">  🤝 </span>
+                       <h3>Partnership Development</h3>                   
+                    </div>                    
+                    <p>Position your organization as a credible partner through strategic brand positioning 
+                        that showcases stability, impact, and growth potential.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Strategy Section -->
+    <section class="brand-strategy fade-in" id="approach">
+        <div class="section-header">            
+            <h2>Our comprehensive <span class="gradient-text">brand strategy</span></h2>
+            <p>Powerful storytelling for environmental impact</p>
+        </div>
+        <div class="strategy-grid">
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 7l-7 5 7 5V7z"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <p class="strategy-label">Youtube channel</p>
+                <h3 class="strategy-title">Watch our latest environmental insights</h3>
+                <a href="#" class="strategy-link">Watch →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="strategy-card featured">
+                <p class="strategy-label">Blog</p>
+                <h3 class="strategy-title">Insights on circular economy</h3>
+                <p class="strategy-description">Latest trends in environmental communication</p>
+                <a href="#blog" class="strategy-link">Read →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <p class="strategy-label">Our services</p>
+                <h3 class="strategy-title">Tailored solutions for green organizations</h3>
+                <a href="#services" class="strategy-link">Learn →</a>
+            </div>
+            
+            <div class="strategy-card">
+                <p class="strategy-label">Testimonials</p>
+                <h3 class="strategy-title">Client success stories</h3>
+                <p class="strategy-description">Real results from conservation leaders</p>
+                <a href="#" class="strategy-link">Read →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="strategy-card featured">
+                <div class="strategy-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3 class="strategy-title">Our clients</h3>
+                <p class="strategy-description">Brands making environmental difference</p>
+                <a href="#clients" class="strategy-link">Explore →</a>
+            </div>
+            
+            <div class="strategy-card">
+                <p class="strategy-label">Podcast</p>
+                <h3 class="strategy-title">Deep conversations on sustainability</h3>
+                <p class="strategy-description">Listen to expert perspectives</p>
+                <a href="#" class="strategy-link">Listen →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Packages Section -->
+    <section class="packages fade-in" id="packages">
+        <div class="section-header">
+            <h2>Choose Your <span class="gradient-text">Growth Path</span></h2>
+            <p>Flexible packages designed to meet you where you are and take you where you need to go</p>
+        </div>
+        <div class="packages-grid">
+            <div class="package-card featured">
+                <span class="featured-badge">Free [One-Time Offer]</span>
+                <h3 class="package-name">Basic</h3>
+                <div class="package-price"> KES. 0.00</div>
+                <ul class="package-features">
+                    <li> 1 Brand Audit & Assessment</li>
+                    <li>1 Basic Visual Identity</li>
+                    <li>1 Story Framework Development</li>
+                    <li>1 Consultation Sessions</li>
+                    <li>Email Support</li>
+                    <li>Brand Guidelines Document</li>                    
+                    <li>Unlimited Blog and Training Material Access</li>
+                </ul>
+                <a href="#contact" class="btn-primary">Get Started</a>
+            </div>
+            <div class="package-card featured">
+                <span class="featured-badge">Most Popular</span>
+                <h3 class="package-name">Business</h3>
+                <div class="package-price"> KES. 3,500.00 </div>
+                <ul class="package-features">
+                    <li>Everything in Basic</li>
+                    <li>Complete Brand Identity Design</li>
+                    <li>Content Strategy & Calendar</li>
+                    <li>6 Consultation Sessions</li>
+                    <li>Social Media Templates</li>
+                    <li>Impact Storytelling Workshop</li>
+                    <li>Quarterly Brand Reviews</li>
+                    <li>Priority Support</li>
+                </ul>
+                <a href="#contact" class="btn-primary">Get Started</a>
+            </div>
+            <div class="package-card featured">
+                <span class="featured-badge">Value for Money</span>
+                <h3 class="package-name">Premium</h3>
+                <div class="package-price"> KES. 6,500.00 </div>
+                <ul class="package-features">
+                    <li>Everything in Business</li>
+                    <li>Full Brand Transformation</li>
+                    <li>Video Content Production</li>
+                    <li>12 Monthly Consultation Sessions</li>
+                    <li>Team Training Program</li>
+                    <li>Partnership Pitch Development</li>
+                    <li>Website Content Strategy</li>
+                    <li>Ongoing Brand Management</li>
+                    <li>24/7 Priority Support</li>
+                </ul>
+                <a href="#contact" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    
+     <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Ready to <span class="highlight">Own Your Story?</span></h2>
+            <p>Join forward-thinking organizations that are amplifying their impact through strategic brand management</p>
+            <div class="cta-form">
+                <input type="email" placeholder="Enter your email">
+                <button>Subscribe</button>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #888;">Get exclusive insights, stories, and strategies delivered to your inbox</p>
+        </div>
+    </section>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+
+</body>
+</html>

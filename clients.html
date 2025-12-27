@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOY - Own Your Story | Environmental Branding Consultancy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://kit.fontawesome.com/e8ada9ffa6.js" crossorigin="anonymous"></script>
+    <style>
+        :root { --gold: #D3AF37;       --apricot: #FFECAE;      --orange: #FFA500; 
+                --purple: #9b59b6;     --dark-purple: #5C2E5C;   --light-purple: #CFBDE2;   --blue-violet: #8A2BE2 ;        
+                --black: #000000;      
+                --gray: #6B7280;      --light-gray: #EFEFEF;
+                --white: #FFFFFF;    --soft-white: #F5F5F5; 
+                --alpha-white-soft: #FFFFFF1a;  --alpha-white-hard: #FFFFFF99; 
+            }
+        
+        * {   margin: 0;       padding: 0;       box-sizing: border-box;        }
+        body {    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;         background: linear-gradient(135deg,  var(--soft-white) 0%, var(--white) 100%);
+        }
+
+        /* Floating Shapes Animation */
+        .shape {	position: absolute;      border-radius: 50%;      opacity: 0.15;        animation: float 20s infinite ease-in-out;        }
+        .shape-1 {   width: 300px;     height: 300px; 	top: -150px;	left: -150px;		animation-delay: 0s;
+					background: linear-gradient(135deg, #9b59b6, #e74c3c);                    }
+        .shape-2 {     width: 200px;        height: 200px;	   top: 20%;       right: -100px;        animation-delay: 3s;
+            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+        .shape-3 {     width: 150px;      height: 150px;		bottom: 10%;         left: 5%;          animation-delay: 6s;
+            background: linear-gradient(135deg, #9b59b6, #3498db);       }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }          25% { transform: translate(50px, 30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }      75% { transform: translate(30px, -20px) scale(1.05); }
+        }
+
+        /* Animated Background Bubbles */
+        .bubble {   position: fixed;     border-radius: 50%;       opacity: 0.15;
+            animation: floatingBubble 15s infinite ease-in-out;            z-index: 0;
+        }
+        .bubble1 {    width: 200px;       height: 200px;    top: 10%;           left: 10%;        animation-delay: 0s;
+            background: radial-gradient(circle, #8A2BE2, transparent);            
+        }
+        .bubble2 {       width: 150px;          height: 150px;  top: 60%;           right: 15%;           animation-delay: 2s;
+            background: radial-gradient(circle, #FFA500, transparent)  ;          
+        }
+        .bubble3 {     width: 100px;        height: 100px;   bottom: 10%;          left: 50%;        animation-delay: 4s;
+            background: radial-gradient(circle, #8A2BE2, transparent);           
+        }
+        .bubble4 {      width: 180px;           height: 180px;  top: 30%;       right: 5%;           animation-delay: 6s;
+            background: radial-gradient(circle, #FFA500, transparent);            
+        }
+        @keyframes floatingBubble {
+            0%, 100% {       transform: translate(0, 0) scale(1);           }
+            33% {            transform: translate(30px, -30px) scale(1.1);  }
+            66% {            transform: translate(-20px, 20px) scale(0.9);  }
+        }
+
+        /* Navigation */
+        nav {    position: fixed;         top: 0;         width: 100%;		z-index: 1000;		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95);        backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;            display: flex;        justify-content: space-between;      align-items: center;            
+        }
+        .logo { font-size: 2rem;      font-weight: bold;     background: linear-gradient(135deg, #9b59b6, #e74c3c);
+				-webkit-background-clip: text;        -webkit-text-fill-color: transparent;         background-clip: text;
+        }
+        .nav-links {    display: flex;        	 gap: 2.5rem;         list-style: none;        }
+        .nav-links a {  text-decoration: none;   color: #333;       font-weight: 500;	transition: all 0.3s;     position: relative;        }
+        .nav-links a:hover {            color: #9b59b6;        }
+        .nav-links a::after {    content: '';   position: absolute;      bottom: -5px;      left: 0;    width: 0;  height: 2px;
+            background: linear-gradient(90deg, #9b59b6, #e74c3c);        transition: width 0.3s;
+        }
+        .nav-links a:hover::after {        width: 100%;        }		
+        .cta-btn {   background: linear-gradient(135deg, #9b59b6, #e74c3c);       color: white;
+            padding: 0.8rem 2rem;        border-radius: 50px;         text-decoration: none;       font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-btn:hover {     transform: translateY(-2px);   box-shadow: 0 10px 25px rgba(155, 89, 182, 0.3);        }
+
+        /* Section Header */
+         .section-header {            text-align: center;            margin-bottom: 4rem;        }
+        .section-header h2 {	font-size: 3rem;            color: #2c3e50;            margin-bottom: 1rem;        }
+        .section-header p {     font-size: 1.2rem;         color: #666;       max-width: 700px;      margin: 0 auto;        }
+
+       
+        /* Hero Section */
+        .hero {    min-height: 100vh;      display: flex;     align-items: center;  padding: 6rem 5% 3rem;
+            position: relative;            overflow: hidden;
+        }
+        .hero-content {     max-width: 610px;        z-index: 10;        animation: fadeInLeft 1s ease-out;      }
+
+        @keyframes fadeInLeft {
+            from {    opacity: 0;        transform: translateX(-50px);          }
+            to {      opacity: 1;        transform: translateX(0);            }
+        }
+
+        .hero h1 {   font-size: 4rem;    color: #2c3e50;     margin-bottom: 1rem;     line-height: 1.2;        }
+        .gradient-text {   background: linear-gradient(135deg, #9b59b6, #e74c3c);     -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;            background-clip: text;
+        }
+        .slogan {   font-size: 1.3rem;      font-weight: 600;    color: #f1c40f;      margin-bottom: 0rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+		.hero p {   font-size: 1.1rem;      color: #555;    margin-bottom: 1rem;        line-height: 1.8;     }
+        .hero-buttons {        display: flex;            gap: 1.5rem;        }
+        .btn-primary {       background: linear-gradient(135deg, #9b59b6, #e74c3c);       color: white;
+            padding: 1rem 2.5rem;           border-radius: 50px;         text-decoration: none;     font-weight: 600;
+            transition: all 0.3s;           display: inline-block;
+        }
+        .btn-primary:hover {      transform: translateY(-3px);     box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4);     }
+        .btn-secondary {     background: transparent;      color: #9b59b6;    padding: 1rem 2.5rem;
+            border: 2px solid #9b59b6;           border-radius: 50px;      text-decoration: none;      font-weight: 600;
+            transition: all 0.3s;            display: inline-block;
+        }
+        .btn-secondary:hover {        background: #9b59b6;        color: white;        }
+
+        .hero-visual {  position: absolute;      right: 5%;         top: 50%;     						   transform: translateY(-50%);
+						width: 500px;            height: 500px;     animation: fadeInRight 1s ease-out;    z-index: 1;
+        }
+
+        @keyframes fadeInRight {     
+			from {     opacity: 0;   		transform: translateY(-50%) translateX(50px); }
+            to {       opacity: 1;          transform: translateY(-50%) translateX(0);          }
+        }
+
+        .hero-image {  position: absolute;    width: 400px;    height: 400px;   top: 50%;         left: 50%;
+            transform: translate(-60%, -40%); z-index: 1;      border-radius: 50%;          overflow: hidden;
+            box-shadow: 0 20px 60px rgba(155, 89, 182, 0.3);
+        }
+        .hero-image svg {       width: 100%;            height: 100%;        }
+        .hero-profile-circle {  width: 100%;     height: 100%;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(241, 196, 15, 0.1));
+            display: flex;      align-items: center;         justify-content: center;            position: relative;
+        }
+        #hero-profile-image {        width: 100%;        height: 100%;        color: #9b59b6;        opacity: 0.3;    }
+        
+		
+		
+        .service-tag {  position: absolute;   background: white;    padding: 1rem 2rem;	   
+			display: flex;	 align-items: center;           gap: 0.8rem;
+            border-radius: 50px;            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: float 10s infinite ease-in-out;
+        }
+        .service-icon {       width: 40px;        height: 40px;     border-radius: 50%;      display: flex;
+            align-items: center;            justify-content: center;            font-size: 1.2rem;
+        }
+
+        .tag-1 {      top: 15%;       right: 10%;        animation-delay: 0s;     }
+        .tag-1 .service-icon {     background: linear-gradient(135deg, #9b59b6, #e74c3c);      }
+        .tag-2 {       top: 35%;       right: 0;            animation-delay: 1s;        }
+        .tag-2 .service-icon {            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+        .tag-3 {            bottom: 30%;            right: 20%;            animation-delay: 2s;        }
+        .tag-3 .service-icon {            background: linear-gradient(135deg, #3498db, #2ecc71);        }
+		.tag-4 {            bottom: 10%;            right: 35%;            animation-delay: 3s;        }
+        .tag-4 .service-icon {            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+
+        /* Stats Section */
+        .stats {       padding: 4rem 5%;      background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            color: white;            position: relative;            overflow: hidden;
+        }
+
+        .hero-stats-container { padding: 2rem 3%; 
+            display: grid;        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));          gap: 2rem;
+            max-width: 1200px;     margin: 0 auto;            position: relative;			            z-index: 10;
+        }
+        .hero-stat-item {       background: #bbb0b0;     text-align: center;            animation: fadeInUp 1s ease-out;        }
+        @keyframes fadeInUp {          
+			from {              opacity: 0;                transform: translateY(30px);         }
+            to {                opacity: 1;                transform: translateY(0);            }
+        }
+
+        .hero-stat-number {        font-size: 2rem;         font-weight: bold;        margin-bottom: 0.5rem;        }
+        .hero-stat-label {        font-size: 1rem;        opacity: 0.9;        }
+		
+		
+    </style>
+    
+    
+    <style>         /* Clients Section */
+        .clients {  padding: 6rem 5%;    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);  overflow: hidden;        }
+        .clients-carousel-wrapper {      overflow: hidden;         max-width: 100%;        margin: 0 auto;        }
+        .clients-carousel {		display: flex;           gap: 2rem;      animation: scrollClients 40s linear infinite;     width: fit-content;        }
+        .clients-carousel:hover {       animation-play-state: paused;       }
+        @keyframes scrollClients {   0% {	transform: translateX(0);	}        100% {	transform: translateX(-50%);	}        }
+        .client-card {   background: white;       padding: 2rem 1.5rem;      border-radius: 15px;		min-width: 220px;          max-width: 220px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);     display: flex;    flex-direction: column;	align-items: center;      justify-content: center;         
+			transition: all 0.3s;           flex-shrink: 0;            text-align: center;
+        }
+        .client-card:hover {	transform: translateY(-5px);  box-shadow: 0 10px 30px rgba(155, 89, 182, 0.15);    }
+        .client-logo-circle {   width: 100px;        height: 100px;        border-radius: 50%;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);         display: flex;         align-items: center;            justify-content: center;
+            margin-bottom: 1.5rem;            transition: all 0.3s;        color: #666;
+        }
+        .client-card:hover .client-logo-circle {   background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            color: white;            transform: scale(1.05);
+        }
+        .client-name {     font-size: 1rem;     font-weight: 600;      color: #2c3e50;     line-height: 1.4;     margin: 0;        }
+
+
+
+    </style>
+    
+    <style>        /* Testimonials Section */
+        .testimonials {            padding: 3rem 4%;            background: #f8f8f8;            position: relative;            z-index: 1;        }
+        .testimonials-container {  max-width: 1200px;   margin: 0 auto;     display: grid;  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));        gap: 2rem;        }
+
+        .testimonial-card {   background: #ffffff;    padding: 2.5rem;     border-radius: 30px; 
+            border: 1px solid rgba(138, 43, 226, 0.1);     border-left: 4px solid #9b59b6;       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .testimonial-text {       color: #555;      line-height: 1.8;    margin-bottom: 1.5rem;   font-style: italic;        }
+        .testimonial-author {      display: flex;       align-items: center;       gap: 1rem;        }
+        .author-avatar {    width: 60px;    height: 60px;      border-radius: 50%;
+            background: linear-gradient(135deg, #8A2BE2, #FFA500);
+            display: flex;       align-items: center;     justify-content: center;      font-size: 1.5rem;        font-weight: bold;
+        }
+        .author-info h4 {           font-size: 1.1rem;            margin-bottom: 0.3rem;        }
+        .author-info p {            color: #888;            font-size: 0.9rem;        }
+
+         .testimonial-card:hover {
+            transform: translateY(-5px);     background: #9b59b6;  color: var(--white);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-left-color: #f1c40f;
+        }
+        
+    </style>
+
+    <style>        /* FAQ Section */
+        .faq {           padding: 6rem 5%;            background: white;        }
+        .faq-grid {      display: grid;     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));     gap: 3rem 2rem;
+            max-width: 1200px;            margin: 0 auto 4rem;
+        }
+        .faq-card {      background: white;        padding: 0;        text-align: center;     transition: all 0.3s; }
+        .faq-card:hover {            transform: translateY(-5px);        }
+        .faq-icon {       width: 60px;      height: 60px;      display: flex;       	align-items: center;  justify-content: center;
+            font-size: 2rem;          margin: 0 auto 1.5rem;   transition: all 0.3s;    color: #2c3e50;
+        }
+        .faq-card:hover .faq-icon {         transform: scale(1.15);          color: #9b59b6;        }
+        .faq-question {		font-size: 1.1rem;      color: #2c3e50;        margin-bottom: 1rem;     font-weight: 600;       line-height: 1.4;        }
+        .faq-answer {       color: #666;          line-height: 1.7;        font-size: 0.95rem;        }
+        .faq-cta {          text-align: center;   padding: 2rem 2rem 0;    max-width: 700px;          margin: 3rem auto 0;        }
+        .faq-cta h3 {       font-size: 1.8rem;    color: #2c3e50;          margin-bottom: 0.8rem;     font-weight: 600;       }
+        .faq-cta p {        color: #666;          font-size: 1rem;         margin-bottom: 2rem;       }
+        .faq-cta .btn-secondary {    padding: 0.8rem 2.5rem;       border: 2px solid #2c3e50;      color: #2c3e50;       font-size: 0.95rem;       }
+        .faq-cta .btn-secondary:hover {     background: #2c3e50;        border-color: #2c3e50;        }
+		
+       
+    </style>
+
+    <style>       /* CTA Section */
+        .cta {       padding: 6rem 5%;       position: relative;       z-index: 1;        }
+        .cta-content {      max-width: 800px;   margin: 0 auto;         text-align: center;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(255, 165, 0, 0.05));
+            padding: 4rem 3rem;       border-radius: 40px;         border: 2px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        .cta-content h2 {            font-size: 3rem;            margin-bottom: 1.5rem;        }
+        .cta-content p {            font-size: 1.2rem;            color: #555;       margin-bottom: 2.5rem;    }
+        .cta-form {       display: flex;       gap: 1rem;         max-width: 500px;           margin: 0 auto;    }
+        .cta-form input {  flex: 1;      padding: 1rem 1.5rem;    border-radius: 50px;         border: 2px solid rgba(138, 43, 226, 0.2);
+            background: #ffffff;            color: #1a1a1a;            font-size: 1rem;
+        }
+        .cta-form input::placeholder {            color: #888;        }
+        .cta-form button {    padding: 1rem 2.5rem;    background: linear-gradient(135deg, #8A2BE2, #FFA500);
+            border: none;     border-radius: 50px;     color: #fff;      font-weight: 600;     cursor: pointer;         transition: all 0.3s;
+        }
+        .cta-form button:hover {            transform: translateY(-3px);            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.5);        }
+
+    </style>
+
+</head>
+<body>
+    <!-- Floating Shapes -->
+    <div class="shape shape-1"></div>   <div class="shape shape-2"></div> <div class="shape shape-3"></div>
+
+    <!-- Animated Background Bubbles -->
+    <div class="bubble bubble1"></div>    <div class="bubble bubble2"></div>
+    <div class="bubble bubble3"></div>    <div class="bubble bubble4"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">J.O.Y</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i>  </a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <!--    <li><a href="#packages">Packages</a></li>       -->
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="#clients">Clients</a></li>
+        </ul>
+        <a href="#contact" class="cta-btn">Get Started</a>
+    </nav>
+
+    
+     <!-- Clients Section -->
+    <section class="clients fade-in" id="clients">
+        <div class="section-header">
+            <h2>Trusted by Leading <span class="gradient-text">Organizations</span></h2>
+            <p>Partnering with changemakers across the environmental sector</p>
+        </div>
+        <div class="clients-carousel-wrapper">
+            <div class="clients-carousel">
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Green Earth Alliance</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Ocean Conservation Fund</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Circular Solutions Co.</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                            <line x1="7" y1="7" x2="7.01" y2="7"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Wildlife Protection Network</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v6m0 0L9 5m3 3l3-3M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17H2z"/>
+                            <path d="M20 17v-4a8 8 0 1 0-16 0v4"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Sustainable Agriculture Hub</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">EcoInnovate Partners</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Climate Action Coalition</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Nature Preservation Society</h4>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Green Earth Alliance</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Ocean Conservation Fund</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Circular Solutions Co.</h4>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo-circle">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                            <line x1="7" y1="7" x2="7.01" y2="7"/>
+                        </svg>
+                    </div>
+                    <h4 class="client-name">Wildlife Protection Network</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <h2>Stories of <span class="highlight">Transformation</span></h2>
+            <p>Hear from organizations who found their voice</p>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Joy helped us transform our scattered conservation efforts into a compelling narrative. Our funding partnerships increased by 150% within six months. Our story now resonates with stakeholders and inspires action."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MK</div>
+                    <div class="author-info">
+                        <h4>Maria Kamau</h4>
+                        <p>Director, Green Futures Initiative</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The story framing workshop revolutionized how we communicate our circular economy impact. We went from invisible to influential. Joy's approach is practical, powerful, and transformative."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JO</div>
+                    <div class="author-info">
+                        <h4>James Ochieng</h4>
+                        <p>CEO, Circular Solutions Kenya</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Our brand now stands tall like a tree by the river. Joy didn't just help us tell our story - they helped us own it. The impact on our community engagement has been phenomenal."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AN</div>
+                    <div class="author-info">
+                        <h4>Aisha Ndege</h4>
+                        <p>Founder, Wildlife Conservation Alliance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq fade-in" id="faq">
+        <div class="section-header">
+            <h2><span class="gradient-text">FAQs</span></h2>
+            <p>Common questions about our environmental brand management services.</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-card">
+                <div class="faq-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19l-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v18l-7-4z"/>
+                    </svg>
+                </div>
+                <h3 class="faq-question">What services do you offer?</h3>
+                <p class="faq-answer">We provide brand management, communication strategy, and sustainability consulting.</p>
+            </div>
+            <div class="faq-card">
+                <div class="faq-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="faq-question">How long does a typical engagement last?</h3>
+                <p class="faq-answer">Our consultations range from short-term projects to long-term strategic partnerships.</p>
+            </div>
+            <div class="faq-card">
+                <div class="faq-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3 class="faq-question">Do you work with international organizations?</h3>
+                <p class="faq-answer">Yes, we support environmental initiatives globally.</p>
+            </div>
+            <div class="faq-card">
+                <div class="faq-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <h3 class="faq-question">What makes JOY different?</h3>
+                <p class="faq-answer">We specialize in environmental storytelling and strategic brand development.</p>
+            </div>
+            <div class="faq-card">
+                <div class="faq-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <h3 class="faq-question">What is your pricing structure?</h3>
+                <p class="faq-answer">We offer flexible packages tailored to your organization's needs.</p>
+            </div>
+            <div class="faq-card">
+                <div class="faq-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <h3 class="faq-question">How do I get started?</h3>
+                <p class="faq-answer">Book a free initial consultation to discuss your environmental communication goals.</p>
+            </div>
+        </div>
+        <div class="faq-cta">
+            <h3>Need more information?</h3>
+            <p>Our team is ready to answer your specific questions.</p>
+            <a href="#contact" class="btn-secondary">Contact</a>
+        </div>
+    </section>
+
+     <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Ready to <span class="highlight">Own Your Story?</span></h2>
+            <p>Join forward-thinking organizations that are amplifying their impact through strategic brand management</p>
+            <div class="cta-form">
+                <input type="email" placeholder="Enter your email">
+                <button>Subscribe</button>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #888;">Get exclusive insights, stories, and strategies delivered to your inbox</p>
+        </div>
+    </section>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+
+</body>
+</html>

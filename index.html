@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOY - Own Your Story | Environmental Branding Consultancy</title>
+    <style>
+       
+        * {   margin: 0;       padding: 0;       box-sizing: border-box;        }
+        body {    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;         background: linear-gradient(135deg,  var(--soft-white) 0%, var(--white) 100%);
+        }
+
+        /* Floating Shapes Animation */
+        .shape {	position: absolute;      border-radius: 50%;      opacity: 0.15;        animation: float 20s infinite ease-in-out;        }
+        .shape-1 {   width: 300px;     height: 300px; 	top: -150px;	left: -150px;		animation-delay: 0s;
+					background: linear-gradient(135deg, #9b59b6, #e74c3c);                    }
+        .shape-2 {     width: 200px;        height: 200px;	   top: 20%;       right: -100px;        animation-delay: 3s;
+            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+        .shape-3 {     width: 150px;      height: 150px;		bottom: 10%;         left: 5%;          animation-delay: 6s;
+            background: linear-gradient(135deg, #9b59b6, #3498db);       }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }          25% { transform: translate(50px, 30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }      75% { transform: translate(30px, -20px) scale(1.05); }
+        }
+
+        /* Animated Background Bubbles */
+        .bubble {   position: fixed;     border-radius: 50%;       opacity: 0.15;
+            animation: floatingBubble 15s infinite ease-in-out;            z-index: 0;
+        }
+        .bubble1 {    width: 200px;       height: 200px;    top: 10%;           left: 10%;        animation-delay: 0s;
+            background: radial-gradient(circle, #8A2BE2, transparent);            
+        }
+        .bubble2 {       width: 150px;          height: 150px;  top: 60%;           right: 15%;           animation-delay: 2s;
+            background: radial-gradient(circle, #FFA500, transparent)  ;          
+        }
+        .bubble3 {     width: 100px;        height: 100px;   bottom: 10%;          left: 50%;        animation-delay: 4s;
+            background: radial-gradient(circle, #8A2BE2, transparent);           
+        }
+        .bubble4 {      width: 180px;           height: 180px;  top: 30%;       right: 5%;           animation-delay: 6s;
+            background: radial-gradient(circle, #FFA500, transparent);            
+        }
+        @keyframes floatingBubble {
+            0%, 100% {       transform: translate(0, 0) scale(1);           }
+            33% {            transform: translate(30px, -30px) scale(1.1);  }
+            66% {            transform: translate(-20px, 20px) scale(0.9);  }
+        }
+
+        /* Navigation */
+        nav {   position: fixed;    top: 0;      width: 100%;        background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);        padding: 1.5rem 3%;     display: flex;     justify-content: space-between;
+            align-items: center;        z-index: 1000;            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .logo {       font-size: 2rem;      font-weight: bold;      background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            -webkit-background-clip: text;   -webkit-text-fill-color: transparent;         background-clip: text;
+        }
+        .nav-links {         display: flex;        gap: 2.5rem;        list-style: none;        }
+        .nav-links a {       text-decoration: none;       color: #333;       font-weight: 500;       transition: all 0.3s;        position: relative;        }
+        .nav-links a:hover {        color: #9b59b6;        }
+        .nav-links a::after {       content: '';          position: absolute;           bottom: -5px;        left: 0;      width: 0;   height: 2px;
+                    background: linear-gradient(90deg, #9b59b6, #e74c3c);            transition: width 0.3s;
+        }
+        .nav-links a:hover::after {            width: 100%;        }
+        .cta-btn {  background: linear-gradient(135deg, #9b59b6, #e74c3c);      color: white;      padding: 0.8rem 1.5rem;
+            border-radius: 50px;    text-decoration: none;      font-weight: 600;        transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-btn:hover {        transform: translateY(-2px);        box-shadow: 0 10px 25px rgba(155, 89, 182, 0.3); }
+
+        /* Hero Section */
+         /* Hero Section */
+        .hero {    max-height: 100vh;   max-width: 99%;   display: flex;     align-items: center;  padding: 6rem 3% 1rem;
+            position: relative;            overflow: hidden;
+        }
+        .hero-content {     max-width: 610px;        z-index: 10;        animation: fadeInLeft 1s ease-out;      }
+
+        @keyframes fadeInLeft {
+            from {    opacity: 0;        transform: translateX(-50px);          }
+            to {      opacity: 1;        transform: translateX(0);            }
+        }
+
+        .hero h1 {   font-size: 4rem;    color: #2c3e50;     margin-bottom: 1rem;     line-height: 1.2;        }
+        .gradient-text {   background: linear-gradient(135deg, #9b59b6, #e74c3c);     -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;            background-clip: text;
+        }
+        .slogan {   font-size: 1.3rem;      font-weight: 600;    color: #f1c40f;      margin-bottom: 0rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+		.hero p {   font-size: 1.1rem;      color: #555;    margin-bottom: 1rem;        line-height: 1.8;     }
+        .hero-buttons {        display: flex;            gap: 1.5rem;        }
+        .btn-primary {       background: linear-gradient(135deg, #9b59b6, #e74c3c);       color: white;
+            padding: 1rem 2.5rem;           border-radius: 50px;         text-decoration: none;     font-weight: 600;
+            transition: all 0.3s;           display: inline-block;
+        }
+        .btn-primary:hover {      transform: translateY(-3px);     box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4);     }
+        .btn-secondary {     background: transparent;      color: #9b59b6;    padding: 1rem 2.5rem;
+            border: 2px solid #9b59b6;           border-radius: 50px;      text-decoration: none;      font-weight: 600;
+            transition: all 0.3s;            display: inline-block;
+        }
+        .btn-secondary:hover {        background: #9b59b6;        color: white;        }
+
+        .hero-visual {  position: absolute;      right: 5%;         top: 50%;     						   transform: translateY(-50%);
+						width: 500px;            height: 500px;     animation: fadeInRight 1s ease-out;    z-index: 1;
+        }
+
+        @keyframes fadeInRight {     
+			from {     opacity: 0;   		transform: translateY(-50%) translateX(50px); }
+            to {       opacity: 1;          transform: translateY(-50%) translateX(0);          }
+        }
+
+        .hero-image {  position: absolute;    width: 400px;    height: 400px;   top: 50%;         left: 50%;
+            transform: translate(-60%, -40%); z-index: 1;      border-radius: 50%;          overflow: hidden;
+            box-shadow: 0 20px 60px rgba(155, 89, 182, 0.3);
+        }
+        .hero-image svg {       width: 100%;            height: 100%;        }
+        .hero-profile-circle {  width: 100%;     height: 100%;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(241, 196, 15, 0.1));
+            display: flex;      align-items: center;         justify-content: center;            position: relative;
+        }
+        #hero-profile-image {        width: 100%;        height: 100%;        color: #9b59b6;        opacity: 0.3;    }
+        
+		
+
+        .service-tag {      position: absolute;    background: white;     padding: 1rem 1.5rem;        border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);      display: flex;       align-items: center;     gap: 0.8rem;
+            animation: float 10s infinite ease-in-out;         z-index: 10;         cursor: pointer;         transition: all 0.3s;
+            text-decoration: none;           color: inherit;
+        }
+
+        .service-tag:hover {    transform: scale(1.05);    box-shadow: 0 15px 40px rgba(155, 89, 182, 0.3);      animation-play-state: paused;       }
+        .service-tag:active {       transform: scale(0.98);        }
+        .service-icon {    width: 40px;      height: 40px;      border-radius: 50%;      display: flex;       align-items: center;      justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        
+        .tag-1 {      top: 15%;       right: 10%;        animation-delay: 0s;     }
+        .tag-1 .service-icon {     background: linear-gradient(135deg, #9b59b6, #e74c3c);      }
+        .tag-2 {       top: 35%;       right: 0;            animation-delay: 1s;        }
+        .tag-2 .service-icon {            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+        .tag-3 {            bottom: 30%;            right: 20%;            animation-delay: 2s;        }
+        .tag-3 .service-icon {            background: linear-gradient(135deg, #3498db, #2ecc71);        }
+		.tag-4 {            bottom: 10%;            right: 35%;            animation-delay: 3s;        }
+        .tag-4 .service-icon {            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+
+        /* Modal Styles */
+        .modal-overlay {    display: none;      position: fixed;     top: 0;      left: 0;     width: 100%;        height: 100%;
+            background: rgba(0, 0, 0, 0.7);   z-index: 9999;      justify-content: center;   align-items: center;
+            backdrop-filter: blur(5px);         animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {    from {          opacity: 0;    }       to {          opacity: 1;       }      }
+        .modal-blob {       position: relative;     background: white;    padding: 3rem;     max-width: 750px;      width: 95%;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            animation: blobAppear 0.5s ease-out, blobFloat 6s ease-in-out infinite;         transform-origin: center;
+        }
+
+        @keyframes blobAppear {    
+            from {  opacity: 0;  transform: scale(0.8) rotate(-10deg);    }    to {     opacity: 1;  transform: scale(1) rotate(0deg);   }
+        }
+
+        @keyframes blobFloat {
+            0%, 100% {     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;     transform: rotate(0deg) translateY(0px);   }
+            25% {          border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;     transform: rotate(2deg) translateY(-5px);  }
+            50% {          border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;    transform: rotate(-2deg) translateY(0px);   }
+            75% {          border-radius: 60% 30% 60% 40% / 60% 40% 60% 50%;     transform: rotate(1deg) translateY(-3px);  }
+        }
+
+        .modal-close {  position: absolute;   top: 1.5rem;    right: 1.5rem;     width: 40px;   height: 40px;      border-radius: 50%;
+            background: linear-gradient(135deg, #9b59b6, #e74c3c);    color: white;    border: none;     font-size: 1.5rem;
+            cursor: pointer;      display: flex;       align-items: center;     justify-content: center;     transition: all 0.3s;  z-index: 10;
+        }
+        .modal-close:hover {    transform: rotate(90deg) scale(1.1);    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);       }
+        .modal-icon {  width: 80px;     height: 80px;    border-radius: 50%;     display: flex;      align-items: center;
+            justify-content: center;    margin: 0 auto 1.5rem;    font-size: 2.5rem;   animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {   0%, 100% {        transform: scale(1);     }     50% {       transform: scale(1.1);          }    }
+
+        .modal-icon.conservation {      background: linear-gradient(135deg, #9b59b6, #e74c3c);    }
+        .modal-icon.storytelling {      background: linear-gradient(135deg, #f1c40f, #e67e22);   }
+        .modal-icon.circular {         background: linear-gradient(135deg, #3498db, #2ecc71);    }
+        .modal-icon.brand {            background: linear-gradient(135deg, #f1c40f, #e67e22);    }
+
+        .modal-title {  font-size: 2rem;    color: #2c3e50;     margin-bottom: 1rem;     text-align: center;    font-weight: 700;  }
+        .modal-content { color: #555;     line-height: 1.9;     font-size: 1.05rem;      text-align: center;    margin-bottom: 1rem;  }
+        .modal-features {    list-style: none;       margin-bottom: 1rem;       }
+        .modal-features li { padding: 0.8rem 5rem;	margin: 0px auto;       color: #666;      border-bottom: 1px solid #eee;
+            display: flex;   align-items: center;   gap: 0.8rem;           opacity: 0;        animation: slideInLeft 0.5s ease-out forwards;
+        }
+
+        .modal-features li:nth-child(1) { animation-delay: 0.1s; }
+        .modal-features li:nth-child(2) { animation-delay: 0.2s; }
+        .modal-features li:nth-child(3) { animation-delay: 0.3s; }
+        .modal-features li:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInLeft {  from { opacity: 0;  transform: translateX(-20px);}    to {   opacity: 1;  transform: translateX(0);  } }
+
+        .modal-features li:last-child {         border-bottom: none;      }
+        .modal-features li::before {    content: '✓';     color: #2ecc71;       font-weight: bold;      font-size: 1.2rem;     }
+        .modal-cta {            text-align: center;        }
+        .modal-cta a {   display: inline-block;   background: linear-gradient(135deg, #9b59b6, #e74c3c);        color: white;
+            padding: 1rem 2.5rem;          border-radius: 50px;     text-decoration: none;      font-weight: 600;   transition: all 0.3s;
+        }
+        .modal-cta a:hover {    transform: translateY(-2px);       box-shadow: 0 10px 25px rgba(155, 89, 182, 0.4);   }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {                display: none;            }
+            .hero {                flex-direction: column;                text-align: center;            }
+            .hero-content {                max-width: 100%;            }
+            .hero h1 {                font-size: 2.5rem;            }
+            .hero-visual {    position: relative;   right: 0;       transform: none;     margin-top: 3rem;
+                width: 100%;         max-width: 400px;
+            }
+            .hero-buttons {                justify-content: center;                flex-wrap: wrap;            }
+            
+        }
+
+        /* Scroll Animation */
+        .fade-in {     opacity: 0;     transform: translateY(30px);     transition: all 0.6s ease-out;        }
+        .fade-in.visible {          opacity: 1;          transform: translateY(0);        }
+
+    </style>
+    <style>       /* Stats Section */
+        .stats {       padding: 4rem 5%;      background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            color: white;            position: relative;            overflow: hidden;
+        }
+        .hero-stats-container { padding: 2rem 3%; 
+            display: grid;        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));          gap: 2rem;
+            max-width: 1200px;     margin: 0 auto;            position: relative;			            z-index: 10;
+        }
+        .hero-stat-item {       background: #bbb0b0;     text-align: center;            display: flex;
+            animation: fadeInUp 1s ease-out;      
+        }
+        @keyframes fadeInUp {          
+			from {              opacity: 0;                transform: translateY(30px);         }
+            to {                opacity: 1;                transform: translateY(0);            }
+        }
+        .hero-stat-number {        font-size: 2rem;         font-weight: bold;        margin-bottom: 0.5rem;        }
+        .hero-stat-label {        font-size: 1rem;        opacity: 0.9;        }
+		
+    </style>
+
+    
+    <style>        /* Stats Section */
+        .stats {        padding: 3rem 3%;       background: #f8f8f8;        position: relative;       z-index: 1;  }
+        .stats-container {  display: grid;      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));     gap: 2rem;
+            max-width: 1200px;            margin: 0 auto;
+        }
+        .stat-item {   text-align: center;      padding: 2rem;      background: #ffffff;      border-radius: 20px;
+            border: 1px solid rgba(138, 43, 226, 0.1);      transition: transform 0.3s;       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        .stat-item:hover {            transform: translateY(-10px);        }
+        .stat-number {     font-size: 2.5rem;       font-weight: bold;   background: linear-gradient(135deg, #8A2BE2, #FFA500);
+            -webkit-background-clip: text;        -webkit-text-fill-color: transparent;         background-clip: text;
+        }
+        .stat-label {        font-size: 1.1rem;        color: #555;       margin-top: 0.5rem;     }
+
+    </style>
+
+</head>
+<body>
+    <!-- Floating Shapes -->
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">J.O.Y</div>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <!--    <li><a href="#packages">Packages</a></li>       -->
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="clients.html">Clients</a></li>
+        </ul>
+        <a href="#contact" class="cta-btn">Get Started</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+             <h1>Let Your <span class="gradient-text">Story Shine</span> Like a City on a Hill</h1>
+           <!--	 -->	<p class="slogan">Time to Own Your Story</p>	<!--	-->
+            <p> At JOY, we empower social enterprises and CSOs in conservation, circular economy, and environmental natural resources to craft compelling narratives that inspire belief, forge partnerships, and build lasting impact.</p>
+           <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Start Your Journey</a>
+                <a href="#services" class="btn-secondary">Our Services</a>
+            </div>
+           <div class="hero-stats-container">
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">50+</div>          <div class="hero-stat-label">Brands Managed</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">200+</div>        <div class="hero-stat-label">Stories Told</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">95%</div>       <div class="hero-stat-label">Client Satisfaction</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="hero-stat-number">5+</div>         <div class="hero-stat-label">Years of Impact</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <!-- Hero Image -->
+            <div class="hero-image">
+                <div class="hero-profile-circle">
+                    	<img src="Images/bg1.PNG" class="" id="hero-profile-image"  alt="JOY">                
+                
+                </div>
+            </div>
+            
+            <!-- Floating Bubbles -->
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            
+            <div class="service-tag tag-1" data-modal="conservation">
+                <div class="service-icon">🌱</div>
+                <span>Conservation</span>
+            </div>
+            <div class="service-tag tag-2" data-modal="storytelling">
+                <div class="service-icon">📖</div>
+                <span>Impactful Storytelling</span>
+            </div>
+            <div class="service-tag tag-3" data-modal="circular">
+                <div class="service-icon">♻️</div>
+                <span>Circular Economy</span>
+            </div>
+            <div class="service-tag tag-4" data-modal="brand">
+                <div class="service-icon">💡</div>
+                <span>Brand Strategy</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Overlays -->
+    <div class="modal-overlay" id="modal-conservation">
+        <div class="modal-blob">
+            <button class="modal-close">&times;</button>
+            <div class="modal-icon conservation">🌱</div>
+            <h3 class="modal-title">Conservation</h3>
+            <p class="modal-content">We help conservation organizations articulate their environmental impact with clarity and power, transforming complex ecological work into compelling narratives that inspire action and attract partnerships.</p>
+            <ul class="modal-features">
+                <li>Environmental impact communication strategies</li>
+                <li>Conservation storytelling frameworks</li>
+                <li>Stakeholder engagement materials</li>
+                <li>Grant and funding proposal support</li>
+            </ul>
+            <div class="modal-cta">
+                <a href="#contact">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-storytelling">
+        <div class="modal-blob">
+            <button class="modal-close">&times;</button>
+            <div class="modal-icon storytelling">📖</div>
+            <h3 class="modal-title">Impactful Storytelling</h3>
+            <p class="modal-content">Transform scattered achievements into coherent narratives that build trust and credibility. We craft stories that make your work impossible to ignore and your impact impossible to forget.</p>
+            <ul class="modal-features">
+                <li>Impact narrative development</li>
+                <li>Case study creation and curation</li>
+                <li>Multi-channel content strategies</li>
+                <li>Visual storytelling and infographics</li>
+            </ul>
+            <div class="modal-cta">
+                <a href="#contact">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-circular">
+        <div class="modal-blob">
+            <button class="modal-close">&times;</button>
+            <div class="modal-icon circular">♻️</div>
+            <h3 class="modal-title">Circular Economy</h3>
+            <p class="modal-content">Position your circular economy initiatives as catalysts for change. We help you communicate sustainability, resource efficiency, and regenerative practices in ways that resonate with stakeholders and drive adoption.</p>
+            <ul class="modal-features">
+                <li>Circular economy brand positioning</li>
+                <li>Sustainability reporting and communication</li>
+                <li>Stakeholder education materials</li>
+                <li>Impact measurement and visualization</li>
+            </ul>
+            <div class="modal-cta">
+                <a href="#contact">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-brand">
+        <div class="modal-blob">
+            <button class="modal-close">&times;</button>
+            <div class="modal-icon brand">💡</div>
+            <h3 class="modal-title">Brand Strategy</h3>
+            <p class="modal-content">Excellence is strategy, engineered through consistency and branding. We develop comprehensive brand strategies that ensure your environmental work stands tall like a tree by the river, inspiring belief and forging partnerships.</p>
+            <ul class="modal-features">
+                <li>Brand identity development</li>
+                <li>Strategic positioning and messaging</li>
+                <li>Visual identity and design systems</li>
+                <li>Brand guidelines and implementation</li>
+            </ul>
+            <div class="modal-cta">
+                <a href="#contact">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Scroll Animation using jQuery
+            function checkScroll() {
+                $('.fade-in').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom - 100) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
+            
+            // Check on scroll
+            $(window).on('scroll', checkScroll);
+            
+            // Check on page load
+            checkScroll();
+
+            // Smooth Scroll using jQuery
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                var target = $(this).attr('href');
+                
+                if ($(target).length) {
+                    $('html, body').animate({
+                        scrollTop: $(target).offset().top
+                    }, 800, 'swing');
+                }
+            });
+
+            // Newsletter Form Submission
+            $('.newsletter-form').on('submit', function(e) {
+                e.preventDefault();
+                var email = $(this).find('input[type="email"]').val();
+                
+                if (email) {
+                    alert('Thank you for subscribing! We\'ll be in touch soon.');
+                    $(this).find('input[type="email"]').val('');
+                }
+            });
+
+            // Service Cards Hover Effect Enhancement
+            $('.service-card').hover(
+                function() {
+                    $(this).find('.service-card-icon').css('transform', 'scale(1.1) rotate(5deg)');
+                },
+                function() {
+                    $(this).find('.service-card-icon').css('transform', 'scale(1) rotate(0deg)');
+                }
+            );
+
+            // Package Cards Click Enhancement
+            $('.package-card .btn-primary').on('click', function(e) {
+                e.preventDefault();
+                var packageName = $(this).closest('.package-card').find('.package-name').text();
+                alert('Great choice! You selected the ' + packageName + ' package. We\'ll contact you shortly.');
+                $('html, body').animate({
+                    scrollTop: $('#contact').offset().top
+                }, 800);
+            });
+
+            // Blog Cards Hover Animation
+            $('.blog-card').hover(
+                function() {
+                    $(this).find('.blog-image').css('transform', 'scale(1.05)');
+                },
+                function() {
+                    $(this).find('.blog-image').css('transform', 'scale(1)');
+                }
+            );
+
+            // Client Logo Animation on Hover
+            $('.client-card').hover(
+                function() {
+                    $(this).find('.client-logo-circle').css({
+                        'background': 'linear-gradient(135deg, #9b59b6, #e74c3c)',
+                        'color': 'white',
+                        'transform': 'scale(1.05)'
+                    });
+                },
+                function() {
+                    $(this).find('.client-logo-circle').css({
+                        'background': 'linear-gradient(135deg, #f5f5f5, #e8e8e8)',
+                        'color': '#666',
+                        'transform': 'scale(1)'
+                    });
+                }
+            );
+
+            // Add transition to client logos
+            $('.client-logo-circle').css('transition', 'all 0.3s ease');
+
+            // Stats Counter Animation
+            function animateValue(element, start, end, duration) {
+                var range = end - start;
+                var current = start;
+                var increment = end > start ? 1 : -1;
+                var stepTime = Math.abs(Math.floor(duration / range));
+                
+                var timer = setInterval(function() {
+                    current += increment;
+                    $(element).text(current + ($(element).text().includes('%') ? '%' : '+'));
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // Trigger stats animation when in viewport
+            var statsAnimated = false;
+            $(window).on('scroll', function() {
+                if (!statsAnimated) {
+                    var statsTop = $('.stats').offset().top;
+                    var statsBottom = statsTop + $('.stats').outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (statsBottom > viewportTop && statsTop < viewportBottom) {
+                        statsAnimated = true;
+                        
+                        // Animate each stat number
+                        $('.stat-item').each(function(index) {
+                            var $statNumber = $(this).find('.stat-number');
+                            var text = $statNumber.text();
+                            var number = parseInt(text.replace(/\D/g, ''));
+                            
+                            setTimeout(function() {
+                                if (text.includes('%')) {
+                                    animateValue($statNumber, 0, number, 2000);
+                                } else {
+                                    animateValue($statNumber, 0, number, 2000);
+                                }
+                            }, index * 200);
+                        });
+                    }
+                }
+            });
+
+            // Add transition to service card icons
+            $('.service-card-icon').css('transition', 'transform 0.3s ease');
+            $('.blog-image').css('transition', 'transform 0.3s ease');
+
+            // FAQ Card Hover Animation
+            $('.faq-card').hover(
+                function() {
+                    $(this).find('.faq-icon').css({
+                        'transform': 'scale(1.15)',
+                        'color': '#9b59b6'
+                    });
+                },
+                function() {
+                    $(this).find('.faq-icon').css({
+                        'transform': 'scale(1)',
+                        'color': '#2c3e50'
+                    });
+                }
+            );
+
+            // Add transition to FAQ icons
+            $('.faq-icon').css('transition', 'all 0.3s ease');
+
+            // Service Tag Bubble Interactions
+            // Freeze animation on hover
+            $('.service-tag').hover(
+                function() {
+                    $(this).css('animation-play-state', 'paused');
+                    // Add visual feedback
+                    $(this).css({
+                        'box-shadow': '0 20px 50px rgba(155, 89, 182, 0.4)',
+                        'transform': 'scale(1.08)'
+                    });
+                },
+                function() {
+                    $(this).css('animation-play-state', 'running');
+                    $(this).css({
+                        'box-shadow': '0 10px 30px rgba(0, 0, 0, 0.1)',
+                        'transform': 'scale(1)'
+                    });
+                }
+            );
+
+            // Open modal on click with enhanced animation
+            $('.service-tag').on('click', function(e) {
+                e.preventDefault();
+                var modalId = $(this).data('modal');
+                var $modal = $('#modal-' + modalId);
+                
+                // Show modal with custom animation
+                $modal.css('display', 'flex').hide().fadeIn(400);
+                
+                // Add pulse effect to clicked bubble
+                $(this).css('animation', 'none');
+                setTimeout(() => {
+                    $(this).css('animation', '');
+                }, 100);
+                
+                // Animate modal blob entrance
+                $modal.find('.modal-blob').css({
+                    'transform': 'scale(0.8) rotate(-10deg)',
+                    'opacity': '0'
+                }).animate({
+                    opacity: 1
+                }, 400).css({
+                    'transform': 'scale(1) rotate(0deg)',
+                    'transition': 'transform 0.4s ease-out'
+                });
+                
+                // Reset and animate feature list items
+                $modal.find('.modal-features li').css({
+                    'opacity': '0',
+                    'transform': 'translateX(-20px)'
+                }).each(function(index) {
+                    $(this).delay(100 + (index * 100)).animate({
+                        opacity: 1
+                    }, 300).css({
+                        'transform': 'translateX(0)',
+                        'transition': 'transform 0.3s ease-out'
+                    });
+                });
+                
+                $('body').css('overflow', 'hidden'); // Prevent scrolling when modal is open
+            });
+
+            // Close modal with animation
+            function closeModal($modal) {
+                $modal.find('.modal-blob').css({
+                    'transform': 'scale(1)',
+                    'transition': 'transform 0.3s ease-in, opacity 0.3s ease-in'
+                }).animate({
+                    opacity: 0
+                }, 300, function() {
+                    $modal.fadeOut(200);
+                }).css('transform', 'scale(0.8) rotate(10deg)');
+                
+                $('body').css('overflow', 'auto'); // Restore scrolling
+            }
+
+            // Close modal when clicking close button
+            $('.modal-close').on('click', function() {
+                closeModal($(this).closest('.modal-overlay'));
+            });
+
+            // Close modal when clicking outside the blob
+            $('.modal-overlay').on('click', function(e) {
+                if ($(e.target).hasClass('modal-overlay')) {
+                    closeModal($(this));
+                }
+            });
+
+            // Close modal on escape key
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    var $visibleModal = $('.modal-overlay:visible');
+                    if ($visibleModal.length) {
+                        closeModal($visibleModal);
+                    }
+                }
+            });
+
+            // Prevent modal content clicks from closing modal
+            $('.modal-blob').on('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Add ripple effect to CTA button in modal
+            $('.modal-cta a').on('click', function(e) {
+                var $button = $(this);
+                var x = e.pageX - $button.offset().left;
+                var y = e.pageY - $button.offset().top;
+                
+                var $ripple = $('<span class="ripple"></span>');
+                $ripple.css({
+                    'position': 'absolute',
+                    'width': '0',
+                    'height': '0',
+                    'border-radius': '50%',
+                    'background': 'rgba(255, 255, 255, 0.5)',
+                    'transform': 'translate(-50%, -50%)',
+                    'left': x + 'px',
+                    'top': y + 'px',
+                    'pointer-events': 'none'
+                });
+                
+                $button.css('position', 'relative').css('overflow', 'hidden').append($ripple);
+                
+                $ripple.animate({
+                    width: '300px',
+                    height: '300px',
+                    opacity: 0
+                }, 600, function() {
+                    $ripple.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

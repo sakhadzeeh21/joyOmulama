@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOY - Own Your Story | Environmental Branding Consultancy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://kit.fontawesome.com/e8ada9ffa6.js" crossorigin="anonymous"></script>
+    <style>
+        :root { --gold: #D3AF37;       --apricot: #FFECAE;      --orange: #FFA500; 
+                --purple: #9b59b6;     --dark-purple: #5C2E5C;   --light-purple: #CFBDE2;   --blue-violet: #8A2BE2 ;        
+                --black: #000000;      
+                --gray: #6B7280;      --light-gray: #EFEFEF;
+                --white: #FFFFFF;    --soft-white: #F5F5F5; 
+                --alpha-white-soft: #FFFFFF1a;  --alpha-white-hard: #FFFFFF99; 
+            }
+        
+        * {   margin: 0;       padding: 0;       box-sizing: border-box;        }
+        body {    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;         background: linear-gradient(135deg,  var(--soft-white) 0%, var(--white) 100%);
+        }
+
+        /* Floating Shapes Animation */
+        .shape {	position: absolute;      border-radius: 50%;      opacity: 0.15;        animation: float 20s infinite ease-in-out;        }
+        .shape-1 {   width: 300px;     height: 300px; 	top: -150px;	left: -150px;		animation-delay: 0s;
+					background: linear-gradient(135deg, #9b59b6, #e74c3c);                    }
+        .shape-2 {     width: 200px;        height: 200px;	   top: 20%;       right: -100px;        animation-delay: 3s;
+            background: linear-gradient(135deg, #f1c40f, #e67e22);        }
+        .shape-3 {     width: 150px;      height: 150px;		bottom: 10%;         left: 5%;          animation-delay: 6s;
+            background: linear-gradient(135deg, #9b59b6, #3498db);       }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }          25% { transform: translate(50px, 30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }      75% { transform: translate(30px, -20px) scale(1.05); }
+        }
+
+        /* Animated Background Bubbles */
+        .bubble {   position: fixed;     border-radius: 50%;       opacity: 0.15;
+            animation: floatingBubble 15s infinite ease-in-out;            z-index: 0;
+        }
+        .bubble1 {    width: 200px;       height: 200px;    top: 10%;           left: 10%;        animation-delay: 0s;
+            background: radial-gradient(circle, #8A2BE2, transparent);            
+        }
+        .bubble2 {       width: 150px;          height: 150px;  top: 60%;           right: 15%;           animation-delay: 2s;
+            background: radial-gradient(circle, #FFA500, transparent)  ;          
+        }
+        .bubble3 {     width: 100px;        height: 100px;   bottom: 10%;          left: 50%;        animation-delay: 4s;
+            background: radial-gradient(circle, #8A2BE2, transparent);           
+        }
+        .bubble4 {      width: 180px;           height: 180px;  top: 30%;       right: 5%;           animation-delay: 6s;
+            background: radial-gradient(circle, #FFA500, transparent);            
+        }
+        @keyframes floatingBubble {
+            0%, 100% {       transform: translate(0, 0) scale(1);           }
+            33% {            transform: translate(30px, -30px) scale(1.1);  }
+            66% {            transform: translate(-20px, 20px) scale(0.9);  }
+        }
+
+        /* Navigation */
+        nav {    position: fixed;         top: 0;         width: 100%;		z-index: 1000;		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95);        backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;            display: flex;        justify-content: space-between;      align-items: center;            
+        }
+        .logo { font-size: 2rem;      font-weight: bold;     background: linear-gradient(135deg, #9b59b6, #e74c3c);
+				-webkit-background-clip: text;        -webkit-text-fill-color: transparent;         background-clip: text;
+        }
+        .nav-links {    display: flex;        	 gap: 2.5rem;         list-style: none;        }
+        .nav-links a {  text-decoration: none;   color: #333;       font-weight: 500;	transition: all 0.3s;     position: relative;        }
+        .nav-links a:hover {            color: #9b59b6;        }
+        .nav-links a::after {    content: '';   position: absolute;      bottom: -5px;      left: 0;    width: 0;  height: 2px;
+            background: linear-gradient(90deg, #9b59b6, #e74c3c);        transition: width 0.3s;
+        }
+        .nav-links a:hover::after {        width: 100%;        }		
+        .cta-btn {   background: linear-gradient(135deg, #9b59b6, #e74c3c);       color: white;
+            padding: 0.8rem 2rem;        border-radius: 50px;         text-decoration: none;       font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-btn:hover {     transform: translateY(-2px);   box-shadow: 0 10px 25px rgba(155, 89, 182, 0.3);        }
+
+         /* Section Header */
+         .section-header {            text-align: center;            margin-bottom: 4rem;        }
+        .section-header h2 {	font-size: 3rem;            color: #2c3e50;            margin-bottom: 1rem;        }
+        .section-header p {     font-size: 1.2rem;         color: #666;       max-width: 700px;      margin: 0 auto;        }
+
+       
+    </style>
+   
+   
+    <style>        /* About Section */
+        .about {    padding: 6rem 5%;       background: white;      }
+        .about-container {   display: grid;    grid-template-columns: 1fr 1fr;       gap: 4rem;
+            max-width: 1200px;            margin: 0 auto;            align-items: center;
+        }
+        .about-content h2 {       font-size: 2.5rem;            color: #2c3e50;            margin-bottom: 1.5rem;        }
+        .about-content p {        color: #666;      line-height: 1.9;        margin-bottom: 1.5rem;      font-size: 1.1rem;        }
+        .skills {        display: grid;      grid-template-columns: 1fr 1fr;        gap: 1.5rem;      margin-top: 2rem;        }
+        .skill-item {    display: flex;      align-items: center;         gap: 1rem;        }
+        .skill-icon {    width: 50px;        height: 50px;        border-radius: 50%;	color: white;            font-size: 1.5rem;
+            background: linear-gradient(135deg, #9b59b6, #e74c3c);  display: flex;      align-items: center;		justify-content: center;            
+        }
+        .skill-name {           font-weight: 600;          color: #2c3e50;        }
+        .about-visual {            position: relative;            height: 500px;        }
+        .circle-graphic {    position: absolute;        border-radius: 50%;        border: 3px solid;    
+              animation: floatingBubble 15s infinite ease-in-out;     }
+        .circle1 {    width: 300px;       height: 300px;        border-color: #8A2BE2;        top: 50%;
+            left: 50%;            transform: translate(-50%, -50%);       animation-delay: 3s;
+        }
+        .circle2 {     width: 200px;      height: 200px;     border-color: #FFA500;    top: 50%;     left: 50%;
+            transform: translate(-50%, -50%);        animation-direction: reverse;animation-delay: 2s;
+        }
+        .circle3 {    width: 100px;      height: 100px;     border-color: #8A2BE2;    top: 50%;     left: 50%;
+            transform: translate(-50%, -50%);          background: linear-gradient(135deg, #8A2BE2, #FFA500); animation-delay: 0s;
+        }
+
+        @keyframes rotate {
+            from {               transform: translate(-50%, -50%) rotate(0deg);            }
+            to {                transform: translate(-50%, -50%) rotate(360deg);            }
+        }
+
+     
+    </style>
+    
+
+    <style>/* Brand Strategy Section */
+        .brand-strategy {            padding: 6rem 5%;            background: #fafafa;        }
+        .strategy-grid {   display: grid;      grid-template-columns: repeat(3, 1fr);      gap: 1.5rem;
+            max-width: 1200px;            margin: 0 auto;
+        }
+        .strategy-card {    background: white;      border: 2px solid #e0e0e0;    border-radius: 8px;     padding: 2rem;
+            transition: all 0.3s;        display: flex;      flex-direction: column;       min-height: 280px;
+        }
+        .strategy-card:hover {    transform: translateY(-5px);       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #9b59b6;
+        }
+        .strategy-card.featured {    background: linear-gradient(135deg, #9b59b6, #e74c3c);      color: white;      border-color: #2c3e50;      }
+        .strategy-icon {           margin-bottom: 1rem;          color: #2c3e50;        }
+        .strategy-card.featured .strategy-icon {            color: white;        }
+        .strategy-label {  font-size: 0.85rem;    color: #666;     margin-bottom: 0.8rem;    text-transform: capitalize;        }
+        .strategy-card.featured .strategy-label {            color: rgba(255, 255, 255, 0.8);        }
+        .strategy-title {   font-size: 1.3rem;  color: #2c3e50;    margin-bottom: 0.8rem;     font-weight: 600;     line-height: 1.4;        }
+        .strategy-card.featured .strategy-title {            color: white;        }
+        .strategy-description {  font-size: 0.95rem;   color: #666;       margin-bottom: 1rem;   line-height: 1.6;        }
+        .strategy-card.featured .strategy-description {       color: rgba(255, 255, 255, 0.9);        }
+        .strategy-link {      color: #2c3e50;     text-decoration: none;      font-weight: 600;    	   display: inline-flex;
+            align-items: center;        gap: 0.5rem;     margin-top: auto;    transition: gap 0.3s;    font-size: 0.95rem;
+        }
+        .strategy-card.featured .strategy-link {            color: white;        }
+        .strategy-link:hover {            gap: 1rem;        }
+        .strategy-image {     margin-top: auto;    padding-top: 1.5rem;     background: #f5f5f5;           border-radius: 6px;         min-height: 120px;
+			display: flex;      align-items: center;            justify-content: center;       
+        }
+        .strategy-card.featured .strategy-image {            background: rgba(255, 255, 255, 0.1);        }
+
+        
+
+    </style>
+
+    <style>             /* Impact Section */
+        .impact {     padding: 3rem 4%;       background: var(--soft-white);         position: relative;        z-index: 1;        }
+        .impact-content {
+            max-width: 900px; margin: 3rem auto; background: rgba(0,0,0,0.5); padding: 3rem; 
+            border-radius: 30px; text-align: center;    align-items: center;    animation: fadeInLeft 1s ease-out;  
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <!-- Floating Shapes -->
+    <div class="shape shape-1"></div>   <div class="shape shape-2"></div> <div class="shape shape-3"></div>
+
+    <!-- Animated Background Bubbles -->
+    <div class="bubble bubble1"></div>    <div class="bubble bubble2"></div>
+    <div class="bubble bubble3"></div>    <div class="bubble bubble4"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">J.O.Y</div>
+        <ul class="nav-links">            
+            <li><a href="index.html"><i class="fa-solid fa-house"></i>  </a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <!--    <li><a href="#packages">Packages</a></li>       -->
+           <li><a href="resources.html">Resources</a></li>
+            <li><a href="clients.html">Clients</a></li>
+        </ul>
+        <a href="#contact" class="cta-btn">Get Started</a>
+    </nav>
+
+    
+   
+    <!-- About Section -->
+    <section class="about fade-in" id="about">
+        <div class="section-header">            
+            <h2>Own your  <span class="gradient-text">Story</span></h2>
+            <p>Excellence is strategy, engineered through consistency and branding.</p>        
+        </div>
+        <div class="about-container">
+            <div class="about-content">               
+                <p>Many social enterprises and organizations operating within agriculture, conservation, and circular economy do 
+                marvelous work with long-term impact; yet their stories largerly go unnoticed instead of shining like a
+                city on a hill.
+                </p>
+
+                <p>At J.O.Y, we believe that with the right framing, these stories can grow roots and stand tall like a tree by the 
+                river, inspiring real belief, forging sustainable partnerships, and building progressively. 
+                </p>
+                
+                <p>We specialize in helping organizations own their narrative and communicate their impact with clarity and power.
+                     This earmarks the survival or demise of any venture. 
+                </p> 
+                <p>We're here to help you own your narrative and ensure your voice is heard, your impact sustained.                </p>
+
+                <div class="skills">
+                    <div class="skill-item">
+                        <div class="skill-icon">🎨</div>
+                        <div class="skill-name">Creative Strategy</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">📢</div>
+                        <div class="skill-name">Communication</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">🌱</div>
+                        <div class="skill-name">Conservation Focus</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">♻️</div>
+                        <div class="skill-name">Circular Economy</div>
+                    </div>
+                </div>
+            </div>
+                <div class="about-visual">
+                <div class="circle-graphic circle1"></div>
+                <div class="circle-graphic circle2"></div>
+                <div class="circle-graphic circle3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Strategy Section -->
+    <section class="brand-strategy fade-in" id="approach">
+        <div class="section-header">            
+            <h2>Our comprehensive <span class="gradient-text">brand strategy</span></h2>
+            <p>Powerful storytelling for environmental impact</p>
+        </div>
+        <div class="strategy-grid">
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 7l-7 5 7 5V7z"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <p class="strategy-label">Youtube channel</p>
+                <h3 class="strategy-title">Watch our latest environmental insights</h3>
+                <a href="#" class="strategy-link">Watch →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="strategy-card featured">
+                <p class="strategy-label">Blog</p>
+                <h3 class="strategy-title">Insights on circular economy</h3>
+                <p class="strategy-description">Latest trends in environmental communication</p>
+                <a href="#blog" class="strategy-link">Read →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <p class="strategy-label">Our services</p>
+                <h3 class="strategy-title">Tailored solutions for green organizations</h3>
+                <a href="#services" class="strategy-link">Learn →</a>
+            </div>
+            
+            <div class="strategy-card">
+                <p class="strategy-label">Testimonials</p>
+                <h3 class="strategy-title">Client success stories</h3>
+                <p class="strategy-description">Real results from conservation leaders</p>
+                <a href="#" class="strategy-link">Read →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="strategy-card featured">
+                <div class="strategy-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3 class="strategy-title">Our clients</h3>
+                <p class="strategy-description">Brands making environmental difference</p>
+                <a href="#clients" class="strategy-link">Explore →</a>
+            </div>
+            
+            <div class="strategy-card">
+                <p class="strategy-label">Podcast</p>
+                <h3 class="strategy-title">Deep conversations on sustainability</h3>
+                <p class="strategy-description">Listen to expert perspectives</p>
+                <a href="#" class="strategy-link">Listen →</a>
+                <div class="strategy-image">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="impact"  id="impact">
+        <div class="section-header">
+            <h2>See Our <span class="highlight">Impact</span></h2>
+            <p>Watch how we help organizations transform their stories</p>
+        </div>
+        <div class="impact-content"  >
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(255, 165, 0, 0.2));">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem;">▶️</div>
+                <p style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #ccc;">Video: J.O.Y - Own Your Story</p>
+            </div>
+            <p style="margin-top: 2rem; color: #ccc;">Discover how we're helping environmental organizations shine like cities on a hill</p>
+        </div>
+    </section>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Scroll Animation using jQuery
+            function checkScroll() {
+                $('.fade-in').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom - 100) {
+                        $(this).addClass('visible');
+                    }
+                });
+
+
+            }
+            
+            // Check on scroll
+            $(window).on('scroll', checkScroll);
+            
+            // Check on page load
+            checkScroll();
+
+            // Smooth Scroll using jQuery
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                var target = $(this).attr('href');
+                
+                if ($(target).length) {
+                    $('html, body').animate({  scrollTop: $(target).offset().top  }, 800, 'swing');
+                }
+            });
+
+            // Newsletter Form Submission
+            $('.newsletter-form').on('submit', function(e) {
+                e.preventDefault();
+                var email = $(this).find('input[type="email"]').val();
+                
+                if (email) {
+                    alert('Thank you for subscribing! We\'ll be in touch soon.');
+                    $(this).find('input[type="email"]').val('');
+                }
+            });
+
+            // Service Cards Hover Effect Enhancement
+            $('.service-card').hover(
+                function() {    $(this).find('.service-card-icon').css('transform', 'scale(1.1) rotate(5deg)');  },
+                function() {    $(this).find('.service-card-icon').css('transform', 'scale(1) rotate(0deg)');    }
+            );
+
+            // Package Cards Click Enhancement
+            $('.package-card .btn-primary').on('click', function(e) {
+                e.preventDefault();
+                var packageName = $(this).closest('.package-card').find('.package-name').text();
+                alert('Great choice! You selected the ' + packageName + ' package. We\'ll contact you shortly.');
+                $('html, body').animate({      scrollTop: $('#contact').offset().top      }, 800);
+            });
+
+            // Blog Cards Hover Animation
+            $('.blog-card').hover(
+                function() {      $(this).find('.blog-image').css('transform', 'scale(1.05)');          },
+                function() {      $(this).find('.blog-image').css('transform', 'scale(1)');             }
+            );
+
+            // Client Logo Animation on Hover
+            $('.client-card').hover(
+                function() {
+                    $(this).find('.client-logo-circle').css({
+                        'background': 'linear-gradient(135deg, #9b59b6, #e74c3c)', 'color': 'white', 'transform': 'scale(1.05)'
+                    });
+                },
+                function() {
+                    $(this).find('.client-logo-circle').css({
+                        'background': 'linear-gradient(135deg, #f5f5f5, #e8e8e8)', 'color': '#666', 'transform': 'scale(1)'
+                    });
+                }
+            );
+
+            // Add transition to client logos
+            $('.client-logo-circle').css('transition', 'all 0.3s ease');
+
+            // Stats Counter Animation
+            function animateValue(element, start, end, duration) {
+                var range = end - start;
+                var current = start;
+                var increment = end > start ? 1 : -1;
+                var stepTime = Math.abs(Math.floor(duration / range));
+                
+                var timer = setInterval(function() {
+                    current += increment;
+                    $(element).text(current + ($(element).text().includes('%') ? '%' : '+'));
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // Trigger stats animation when in viewport
+            var statsAnimated = false;
+            $(window).on('scroll', function() {
+                if (!statsAnimated) {
+                    var statsTop = $('.stats').offset().top;
+                    var statsBottom = statsTop + $('.stats').outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (statsBottom > viewportTop && statsTop < viewportBottom) {
+                        statsAnimated = true;
+                        
+                        // Animate each stat number
+                        $('.stat-item').each(function(index) {
+                            var $statNumber = $(this).find('.stat-number');
+                            var text = $statNumber.text();
+                            var number = parseInt(text.replace(/\D/g, ''));
+                            
+                            setTimeout(function() {
+                                if (text.includes('%')) {
+                                    animateValue($statNumber, 0, number, 2000);
+                                } else {
+                                    animateValue($statNumber, 0, number, 2000);
+                                }
+                            }, index * 200);
+                        });
+                    }
+                }
+            });
+
+            // Add transition to service card icons
+            $('.service-card-icon').css('transition', 'transform 0.3s ease');
+            $('.blog-image').css('transition', 'transform 0.3s ease');
+
+            // FAQ Card Hover Animation
+            $('.faq-card').hover(
+                function() {
+                    $(this).find('.faq-icon').css({
+                        'transform': 'scale(1.15)',
+                        'color': '#9b59b6'
+                    });
+                },
+                function() {
+                    $(this).find('.faq-icon').css({
+                        'transform': 'scale(1)',
+                        'color': '#2c3e50'
+                    });
+                }
+            );
+
+            // Add transition to FAQ icons
+            $('.faq-icon').css('transition', 'all 0.3s ease');
+        });
+    </script>
+</body>
+</html>
